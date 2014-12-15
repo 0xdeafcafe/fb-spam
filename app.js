@@ -17,7 +17,6 @@ if (program.id == undefined && program.token == undefined && program.pages == un
 
 if (program.id == undefined || program.token == undefined) {
 	logError("It's required to specify both an id and a token. Type `fb-spam -h` for more information.");
-	process.exit(1);
 }
 
 var user_id = program.id;
