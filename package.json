@@ -14,8 +14,9 @@
   "author": "Alex Forbes-Reed (0xdeafcafe)",
   "license": "MIT",
   "dependencies": {
-    "asyncawait": "^0.7.4",
     "commander": "^2.5.0",
-    "fbgraph": "^0.3.0"
+    "fbgraph": "^0.3.0",
+    "readline": "0.0.5",
+    "wait.for": "^0.6.6"
   }
 }
