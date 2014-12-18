@@ -45,7 +45,12 @@ wait.launchFiber(function () {
 			for(var y = 0; y < pages; y++) {
 				if (url == undefined) break;
 				var result = wait.for(graph.get, url);
+
+				console.log(JSON.stringify(result))
+
+				if (result == undefined) break;
 				if (result.data == undefined) break;
+
 				for(var z = 0; z < result.data.length; z++) {
 					var post = result.data[z];
 					ids.push(post.id);
@@ -60,7 +65,7 @@ wait.launchFiber(function () {
 					}
 				}
 
-				if (result.paging.next != undefined) {
+				if (result.paging != undefined && result.paging.next != undefined) {
 					url = result.paging.next;
 				} else {
 					url = undefined;
@@ -89,7 +94,27 @@ wait.launchFiber(function () {
 
 	// start liking...
 	for(var i = 0; i < ids.length; i++) {
-		// TODO: this
+		try {
+			var result = wait.for(graph.post, "/" + ids[i] + "/likes");
+			console.log("[" + i + "] Liked content - " + ids[i])
+		}
+		catch (err) {
+			switch(err.code) {
+				case 100: // weird id error
+					console.log("[" + i + "] Weird Id error, carry on.")
+					break;
+				case 190:
+					logError("[" + i + "] Specified OAuth Access Token has expired.", true);
+					break;
+				case 368:
+					logError("[" + i + "] Banned from liking, fcking #rekt.", true);
+					break;
+
+				default:
+					logError(err, false);
+					break;
+				}
+		}
 	}
 });
 
