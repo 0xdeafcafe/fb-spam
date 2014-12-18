@@ -1,17 +1,31 @@
 {
   "name": "fb-spam",
-  "version": "1.0.0",
+  "author": {
+    "name": "Alex Forbes-Reed (0xdeafcafe)",
+    "url": "http://alx.red/"
+  },
+  "preferGlobal": "true",
+  "version": "1.0.4",
   "description": "Spams a victims facebook profile with likes of everything they've ever posted, along with comments on said items",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "main": "./app.js",
+  "url": "https://github.com/0xdeafcafe/fb-spam/issues",
+  "email": "alexforbesreed@outlook.com",
   "keywords": [
     "facebook",
     "like",
     "abuse"
   ],
-  "author": "Alex Forbes-Reed (0xdeafcafe)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xdeafcafe/fb-spam.git"
+  },
+  "bin": {
+    "fb-spam": "./app.js"
+  },
   "license": "MIT",
   "dependencies": {
     "commander": "^2.5.0",

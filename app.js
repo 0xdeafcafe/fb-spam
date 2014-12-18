@@ -1,13 +1,15 @@
+#!/usr/bin/env node
+
 var program = require('commander');
 var graph = require('fbgraph');
 var wait = require('wait.for');
 
 program
 	.version('0.0.1')
-	.option('-i, --id [id]', '(required) facebook profile id of the user to target')
+	.option('-i, --id [id]', '(required) facebook profile id of the user to target - NOT username')
 	.option('-t, --token [token]', '(required) facebook access_token used to do the abuse from')
 	.option('-p, --pages [count]', '(defaults to 10) number of pages of likes to look through')
-	.option('-u, --username [y/n]', '(defaults to n) if you put a username in the -i field, set this to \'y\'')
+	//.option('-u, --username [y/n]', '(defaults to n) if you put a username in the -i field, set this to \'y\'')
 	.parse(process.argv);
 
 if (program.id == undefined && program.token == undefined && program.pages == undefined) {
